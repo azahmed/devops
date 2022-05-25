@@ -1,0 +1,9 @@
+---
+Resources:
+  MyInstance:
+    Type: AWS::EC2::Instance
+    DeletionPolicy: Retain
+    Properties:
+      AvailabilityZone: ap-southeast-2b
+      ImageId: ami-0c6120f461d6b39e9
+      InstanceType: t2.micro
