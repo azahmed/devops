@@ -1,0 +1,20 @@
+---
+Resources:
+  MyInstance:
+    Type: AWS::EC2::Instance
+    DeletionPolicy: Delete
+    Properties:
+      AvailabilityZone: ap-southeast-2b
+      ImageId: ami-0c6120f461d6b39e9
+      InstanceType: t2.nano
+Outputs:
+  MyInstance:
+    Value: !Ref MyInstance
+    Description: Amazon MyInstance
+    Export:
+      Name: !Sub "${AWS::StackName}-PublicIp"
+  PublicIp:
+      Description: Server Public IP
+      Value: !GetAtt MyInstance.PublicIp
+      Export:
+        Name: !Sub "${AWS::StackName}-PublicIpx"
