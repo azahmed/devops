@@ -7,6 +7,20 @@ Resources:
       AvailabilityZone: ap-southeast-2b
       ImageId: ami-0c6120f461d6b39e9
       InstanceType: t2.nano
+      KeyName: blind-mac
+      SecurityGroups:
+        - !Ref SSHSecurityGroup
+
+  SSHSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Enable SSH_CONNECTION
+      SecurityGroupIngress:
+        - CidrIp: 0.0.0.0/0
+          FromPort: 22
+          ToPort: 22
+          IpProtocol: tcp
+
 Outputs:
   MyInstance:
     Value: !Ref MyInstance
